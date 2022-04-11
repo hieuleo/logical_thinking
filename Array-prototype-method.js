@@ -1,7 +1,6 @@
 let html 
 let arys = ['nguyen', 'quoc','hieu'];
 
-
 // map prototype 
 // map tạo ra arr mới bằng cách lập quá arr được gọi và hàm callback của nó cung cấp 3 thông số (element, i, thisArray- chính nó)
 Array.prototype.map2 = function(callback){
