@@ -127,8 +127,6 @@ Array.prototype.reverse2 = function(){
     return output;
 }
 
-
-
 // splice
 // thay the mot phan tu cua mang bang 1 hoac nhieu tpu kha: argument:start, deleteCount, item1, item2, itemN
 Array.prototype.splice2 = function(start, deleteCount,...args){
@@ -160,5 +158,5 @@ Array.prototype.sort2 = function() {
 
 // reduce method prototype
 // trong reduce-25.js
-arys = ['v','f','g','r','u','r'];
+arys = [5,8,4,7,5,5,9,6,1,7,2,5,4,1,10];
 console.log(arys.sort2());
