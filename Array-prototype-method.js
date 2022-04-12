@@ -1,5 +1,5 @@
 let html 
-let arys = ['nguyen', 'quoc','hieu'];
+let arys = ['nguyen', 'quoc','hieu','quoc','hue','lan'];
 
 // map prototype 
 // map tạo ra arr mới bằng cách lập quá arr được gọi và hàm callback của nó cung cấp 3 thông số (element, i, thisArray- chính nó)
@@ -11,10 +11,6 @@ Array.prototype.map2 = function(callback){
     }
     return output;
 }
-html = arys.map2(function(arr, i, isThis){
-    return arr,i,isThis
-})
-
 
 //forEach prototype
 // hàm forEach prototype đơn giản là lập qua một arr và callback cung cấp các acuments như sau : element, i, thisArray
@@ -24,10 +20,6 @@ Array.prototype.forEach2 = function(callback){
         callback(this[i], i, this);
     }
 }
-arys.forEach2(function(arr, i, isThis){
-    // console.log(arr, i, isThis)
-})
-
 
 //filter prototype
 // hàm cung cấp method tạo ra một array với tất cả các element pass qua được bộ lọc được cung cấp (ví dụ filter để tìm những element có trên 5 ký tự)
@@ -43,10 +35,16 @@ Array.prototype.filter2 = function(callback){
     }
     return output;
 }
-html = arys.filter2(function(array){
-    return typeof array === 'string';
-});
 
+//fill
+//giong filter nhung chi tra ve gia tri dau tim tim thay.
+Array.prototype.find2 = function(callback){
+    let output, arrayLength = this.length;
+    for(let i = 0; i < arrayLength; i++){
+        let result = callback(this[i], i, this);
+        if(result){output = this[i];}
+    }return output;
+}
 
 // some prototype
 // trả về true//false nếu ít nhất một element đúng/sai với điều kiện cần tìm.// nó cung cấp: element, index, thisArray.
@@ -59,10 +57,6 @@ Array.prototype.some2 = function(callback) {
         }
     }
 }
-html = arys.some2(function(array){
-    return typeof array === 'string';
-});
-
 
 // every method prototype
 // trả về true//false nếu tất cả element đúng/sai với điều kiện cần tìm.// nó cung cấp: element, index, thisArray.
@@ -80,9 +74,91 @@ Array.prototype.every2 = function(callback) {
     }
     return flag;
 }
-html = arys.every2(function(array){
-    return typeof array === 'string';
-});
 
+//include:
+//trả về true//false
+Array.prototype.include2 = function(item, fromIndex){
+    if(arguments.length < 2){fromIndex = 0}
+    let output = false;
+    for(fromIndex; fromIndex < this.length; fromIndex++){
+        if (this[fromIndex] === item){
+            output = true;
+        }
+    }
+    return output;
+}
+
+// slice prototype:
+// cắt phần tử của mảng tạo ra mảng mới
+Array.prototype.slice2 = function(start, end){
+    let output = [];
+    if(arguments.length<2){end = this.length};
+    if(arguments.length<1){start = 0; end = this.length}
+    for(let i = start; i < end; i++){output.push(this[i]);}
+    return output;
+}
+
+// fill prototype:
+// lấp đầy các phần tử của arr bằng một giá trị giống nhau. cung cấp: value, start, end.
+Array.prototype.fill2 = function(value, start, end){
+    let output = [];
+    if(arguments.length<3){end = this.length};
+    if(arguments.length<2){start = 0; end = this.length};
+    for(let i=start; i<end; i++){output.push(value)}
+    return output;
+}
+
+// indexOf
+// return về vị trí của element trong arr.
+Array.prototype.indexOf2 = function(value, start){
+    let output = -1, arrlenght =this.length;
+    if(arguments.length<2){start = 0};
+    for(let i=start; i<arrlenght; i++){if(this[i]==value){output = i}};
+    return output;
+}
+
+//reverse
+// đảo ngược
+Array.prototype.reverse2 = function(){
+    let output = [], arrlenght = this.length;
+    for(let i=0; i<arrlenght; i++){
+        output = [this[i], ...output];
+    }
+    return output;
+}
+
+
+
+// splice
+// thay the mot phan tu cua mang bang 1 hoac nhieu tpu kha: argument:start, deleteCount, item1, item2, itemN
+Array.prototype.splice2 = function(start, deleteCount,...args){
+    let output = [], arrlenght = this.length;
+}
+
+// shift push unshift pop, thây đổi độ dài của mảng và khi cố gắn nó cho một biến(mảng) nó ghi đè(k trả về mảng) mà trả về độ dài của mảng.
+// shift loại bỏ phần tử đầu tiên 
+
+//sort: sap xep
+Array.prototype.sort2 = function() {
+    let output = [], arrlenght = this.length, flag;
+    for (let i = 0; i < arrlenght; i++) {
+        flag = this[i];
+        for (let j = i+1; j < arrlenght; j++) {
+            if(flag<this[j]){
+                flag = this[j];
+            }
+        }
+        let flag2 = this.indexOf(flag);
+        this.splice(flag2,1);
+        arrlenght = this.length;
+        i = i - 1;
+        output.unshift(flag);
+    } 
+    this.push(...output);
+    return this;
+}
 
 // reduce method prototype
+// trong reduce-25.js
+arys = ['v','f','g','r','u','r'];
+console.log(arys.sort2());

@@ -1,4 +1,5 @@
 let arrays = [1,2,3,4,5,6,7,8,9,10,11];
+let arrays2 = [1,7,9,8,5,11,5,33,55,44]
 
 //reduce arrays: 
 //có một giá trị cho trước loop qua arr và dựa vào callback để thây đổi giá trị cho trước đó.
@@ -28,10 +29,34 @@ let result4 = arrays.reduce2((init, i) => {if(i%2==0){init = [...init,i]} return
 let result5 = arrays.reduce2((init, i) => {if(i%2 ==0){init = true} return init} ,false)
 let result6 = arrays.reduce2((init, i) => {if(i%2 !=0){init = false} return init} ,true)
 
-// chunk array
+// chunk array: sử dụng slice và for
 //?????????
-let result7
+function chunk (arr, size) {
+    let arrlenght = arr.length;
+    let output = [];
+    for (let i = 0; i < arrlenght; i += size) {
+        output.push(arr.slice(i, i + size));
+    }
+    return output;
+}
 
-//
+//tìm phần tử khác nhau giữa hai array.
+function difference (a, b) {
+    let stack1 = a.reduce2(function (output,element) {
+        if (!b.includes(element)) {
+            output= [...output,element];
+        }
+        return output;
+    },[])
+    let stack2 = b.reduce2(function (output,element) {
+        if (!a.includes(element)) {
+            output= [...output,element];
+        }
+        return output;
+    },[])
+    return stack1.concat(stack2)
+}
 
-console.log('reduce2: ' +result6);
+
+
+console.log(difference(arrays,arrays2));
