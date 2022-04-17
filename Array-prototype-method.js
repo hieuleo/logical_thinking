@@ -137,26 +137,4 @@ Array.prototype.splice2 = function(start, deleteCount,...args){
 // shift loại bỏ phần tử đầu tiên 
 
 //sort: sap xep
-Array.prototype.sort2 = function() {
-    let output = [], arrlenght = this.length, flag;
-    for (let i = 0; i < arrlenght; i++) {
-        flag = this[i];
-        for (let j = i+1; j < arrlenght; j++) {
-            if(flag<this[j]){
-                flag = this[j];
-            }
-        }
-        let flag2 = this.indexOf(flag);
-        this.splice(flag2,1);
-        arrlenght = this.length;
-        i = i - 1;
-        output.unshift(flag);
-    } 
-    this.push(...output);
-    return this;
-}
-
-// reduce method prototype
-// trong reduce-25.js
-arys = [5,8,4,7,5,5,9,6,1,7,2,5,4,1,10];
-console.log(arys.sort2());
+//sort stack
