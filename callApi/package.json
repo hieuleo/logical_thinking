@@ -1,0 +1,11 @@
+{
+  "name": "apiFeatching",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "quoc hieu",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "node-fetch": "^3.2.3"
+  }
+}
